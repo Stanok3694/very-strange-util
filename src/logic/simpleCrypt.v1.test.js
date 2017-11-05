@@ -10,7 +10,14 @@ describe('basic layer functional', () => {
         const roundUpResult = result.toFixed(4);
         return Number(roundUpResult);     
     }
-    
+    const getArrPart = (arr, which) => {
+        return (
+            which === 'even' 
+                ? arr.filter((e, i) => (i + 1) % 2 === 0)
+                : arr.filter((e, i) => i % 2 === 0)
+        );  
+    }
+
     it('should calc pow of sum', () => {
         const actual = powOfSum(x, y);
         const expected = 2.7225;
@@ -28,9 +35,16 @@ describe('basic layer functional', () => {
         const expected = -1.4025;
         expect(actual).toBe(expected);
     });
+    
+    it('should take only even elements', () => {
+        const actual = JSON.stringify(getArrPart(arr, 'even'));
+        const expected = JSON.stringify(['e', 'l', 'w', 'r', 'd']);
+        expect(actual).toBe(expected);
+    });
 
-    it.skip('should take only even elements', () => {
-        const actual = evenElements(arr);
-        const expected = []
+    it('should take only uneven elements', () => {
+        const actual = JSON.stringify(getArrPart(arr, 'uneven'));
+        const expected = JSON.stringify(['h', 'l', 'o', 'o', 'l']);
+        expect(actual).toBe(expected);
     });
 });
