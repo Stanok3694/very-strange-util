@@ -4,7 +4,7 @@ import getArrPart from './getArrPart';
 describe('basic layer functional', () => {
     const x = 0.4;
     const y = 1.25;
-    const service = new Pows(x, y);
+    const PowsService = new Pows(x, y);
     
     const arr = ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd'];
     const evenElements = ['e', 'l', 'w', 'r', 'd'];
@@ -12,19 +12,19 @@ describe('basic layer functional', () => {
     const str = 'helloworld';
 
     it('should calc pow of sum', () => {
-        const actual = service.powOfSum();
+        const actual = PowsService.powOfSum();
         const expected = 2.7225;
         expect(actual).toBe(expected);
     });
 
     it('should calc pow of residual', () => {
-        const actual = service.powOfResidual();
+        const actual = PowsService.powOfResidual();
         const expected = 0.7225;
         expect(actual).toBe(expected);
     });
 
     it('should calc residual of pow', () => {
-        const actual = service.residualOfPow();
+        const actual = PowsService.residualOfPow();
         const expected = -1.4025;
         expect(actual).toBe(expected);
     });
