@@ -1,11 +1,12 @@
 describe('basic layer functional', () => {
     const x = 0.4;
     const y = 1.25;
+    const arr = ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd'];
 
     const powOfSum = (x, y) => roundUpResult(Math.pow(x, 2) + 2*x*y + Math.pow(y, 2));
     const powOfResidual = (x, y) => roundUpResult(Math.pow(x, 2) - 2*x*y + Math.pow(y, 2));
     const residualOfPow = (x, y) => roundUpResult((x-y)*(x+y));
-    const roundUpResult = (result) => {
+    const roundUpResult = result => {
         const roundUpResult = result.toFixed(4);
         return Number(roundUpResult);     
     }
@@ -26,5 +27,10 @@ describe('basic layer functional', () => {
         const actual = residualOfPow(x, y);
         const expected = -1.4025;
         expect(actual).toBe(expected);
+    });
+
+    it.skip('should take only even elements', () => {
+        const actual = evenElements(arr);
+        const expected = []
     });
 });
