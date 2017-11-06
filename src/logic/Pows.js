@@ -5,7 +5,20 @@ export default class Pows {
         this.x = x;
         this.y = y;
     }
-    powOfSum = () => roundUpResult(Math.pow(this.x, 2) + 2*this.x*this.y + Math.pow(this.y, 2));
-    powOfResidual = () => roundUpResult(Math.pow(this.x, 2) - 2*this.x*this.y + Math.pow(this.y, 2));
-    residualOfPow = () => roundUpResult((this.x-this.y)*(this.x+this.y));
+
+    get Sum () {
+        return this.powOfSum(this.x, this.y);
+    }
+
+    get Residual () {
+        return this.powOfResidual(this.x, this.y);
+    }
+
+    get ResidualOfPow () {
+        return this.residualOfPow(this.x, this.y);
+    }
+
+    powOfSum = (x, y) => roundUpResult(Math.pow(x, 2) + 2*x*y + Math.pow(y, 2));
+    powOfResidual = (x, y) => roundUpResult(Math.pow(x, 2) - 2*x*y + Math.pow(y, 2));
+    residualOfPow = (x, y) => roundUpResult((x-y)*(x+y));
 }
