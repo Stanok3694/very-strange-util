@@ -1,5 +1,6 @@
 import Pows from './Pows';
 import getArrPart from './getArrPart';
+import shiftSymbol from './shiftSymbol';
 
 describe('basic layer functional', () => {
     const x = 0.4;
@@ -10,7 +11,9 @@ describe('basic layer functional', () => {
     const evenElements = ['e', 'l', 'w', 'r', 'd'];
     const unevenElements = ['h', 'l', 'o', 'o', 'l'];
     const str = 'helloworld';
-
+    const alphabeticalStr = 'abcdefghijklmnopqrstuvwxyz';
+    const alphabeticalArr = Array.from(alphabeticalStr);
+        
     it('should calc pow of sum', () => {
         const actual = PowsService.powOfSum();
         const expected = 2.7225;
@@ -43,15 +46,49 @@ describe('basic layer functional', () => {
 
     test('that it works fine with string (even)', () => {
         const targetData = Array.from(str);
-        const actual = JSON.stringify(getArrPart(targetData, 'even'));
-        const expected = JSON.stringify(evenElements);
+        const actualArr = getArrPart(targetData, 'even');
+        
+        const actual = actualArr.toString().replace(/,/g, "");
+        const expected = evenElements.toString().replace(/,/g, "");
+        
         expect(actual).toBe(expected);
     });
 
     test('that it works fine with string (uneven)', () => {
         const targetData = Array.from(str);
-        const actual = JSON.stringify(getArrPart(targetData, 'uneven'));
-        const expected = JSON.stringify(unevenElements);
+        const actualArr = getArrPart(targetData, 'uneven');
+        
+        const actual = actualArr.toString().replace(/,/g, "");
+        const expected = unevenElements.toString().replace(/,/g, "");
+        
+        expect(actual).toBe(expected);
+    });
+
+    it('should map phrase part on alphabetical array', () => {
+        const prevValue = 'h';
+        const step = 3;
+        const expected = 'k';
+        const actual = shiftSymbol(prevValue, step, alphabeticalArr);
+        expect(actual).toBe(expected);
+    });
+
+    test('that it works with uneven elements arr', () => {
+        const step = 3;
+        const expected = 'korro';
+        
+        const actualArr = unevenElements.map(e => shiftSymbol(e, step, alphabeticalArr));
+        const actual = actualArr.toString().replace(/,/g, "");
+        // console.log(actual);
+        expect(actual).toBe(expected);
+    });
+
+    test('that it works with even elements arr', () => {
+        const step = 3;
+        const expected = 'hozug';
+
+        const actualArr = evenElements.map(e => shiftSymbol(e, step, alphabeticalArr));
+        const actual = actualArr.toString().replace(/,/g, "");
+        // console.log(actual);
         expect(actual).toBe(expected);
     });
 });
