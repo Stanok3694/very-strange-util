@@ -1,7 +1,9 @@
 import Pows from './Pows';
+import Alphabet from './Alphabet';
 import getArrPart from './getArrPart';
 import shiftSymbol from './shiftSymbol';
 import prettifyArrAsStr from './prettifyArrAsStr';
+import getAverageWordLength from './getAverageWordLength';
 
 describe('basic layer functional', () => {
 
@@ -20,34 +22,7 @@ describe('basic layer functional', () => {
     const unevenPhrase = 'hlool';
     const unevenElements = Array.from(unevenPhrase);
 
-    // ToDo #3: probably can move it to class property?
-    const alphabeticalStr = 'abcdefghijklmnopqrstuvwxyz';
-    const alphabeticalArr = Array.from(alphabeticalStr);
-
-    const getAverageWordLength = phrase => {
-        let listenFirstPosition = 0;
-        let target = phrase;
-        const toArr = Array.from(phrase);
-        console.log(toArr);
-        const res = toArr.map((e, i) => {
-            if (e === ' ' || i === toArr.length - 1) {
-                console.log(i);
-                console.log(e);
-                console.log(listenFirstPosition);
-
-                const newStr = target.substring(listenFirstPosition, i);
-                console.log(newStr);
-
-                target = target.substring(i);
-                console.log(target);
-
-                listenFirstPosition = i;
-                return newStr;
-            }
-        });
-        console.log(res);
-        return res;
-    };
+    // const cryptPhraseByShift = phrasem
 
     it('should calc pow of sum', () => {
         const actual = PowsService.Sum;
@@ -89,20 +64,16 @@ describe('basic layer functional', () => {
     test('that it works fine with string (even)', () => {
         const targetData = Array.from(targetPhrase);
         const actualArr = getArrPart(targetData, 'even');
-
         const actual = prettifyArrAsStr(actualArr)
         const expected = prettifyArrAsStr(evenElements);
-
         expect(actual).toBe(expected);
     });
 
     test('that it works fine with string (uneven)', () => {
         const targetData = Array.from(targetPhrase);
         const actualArr = getArrPart(targetData, 'uneven');
-
         const actual = prettifyArrAsStr(actualArr);
         const expected = prettifyArrAsStr(unevenElements);
-
         expect(actual).toBe(expected);
     });
 
@@ -110,27 +81,23 @@ describe('basic layer functional', () => {
         const prevValue = 'h';
         const step = 3;
         const expected = 'k';
-        const actual = shiftSymbol(prevValue, step, alphabeticalArr);
+        const actual = shiftSymbol(prevValue, step, Alphabet.arr);
         expect(actual).toBe(expected);
     });
 
     test('that it works with uneven elements arr', () => {
         const step = 3;
         const expected = 'korro';
-
-        const actualArr = unevenElements.map(e => shiftSymbol(e, step, alphabeticalArr));
+        const actualArr = unevenElements.map(e => shiftSymbol(e, step, Alphabet.arr));
         const actual = prettifyArrAsStr(actualArr);
-        // console.log(actual);
         expect(actual).toBe(expected);
     });
 
     test('that it works with even elements arr', () => {
         const step = 3;
         const expected = 'hozug';
-
-        const actualArr = evenElements.map(e => shiftSymbol(e, step, alphabeticalArr));
+        const actualArr = evenElements.map(e => shiftSymbol(e, step, Alphabet.arr));
         const actual = prettifyArrAsStr(actualArr);
-        // console.log(actual);
         expect(actual).toBe(expected);
     });
 
