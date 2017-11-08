@@ -4,6 +4,7 @@ import getArrPart from './getArrPart';
 import shiftSymbol from './shiftSymbol';
 import prettifyArrAsStr from './prettifyArrAsStr';
 import getAverageWordLength from './getAverageWordLength';
+import cryptPhraseByShift from './cryptPhraseByShift';
 
 describe('basic layer functional', () => {
 
@@ -21,8 +22,6 @@ describe('basic layer functional', () => {
     const evenElements = Array.from(evenPhrase);
     const unevenPhrase = 'hlool';
     const unevenElements = Array.from(unevenPhrase);
-
-    // const cryptPhraseByShift = phrasem
 
     it('should calc pow of sum', () => {
         const actual = PowsService.Sum;
@@ -61,7 +60,7 @@ describe('basic layer functional', () => {
         expect(actual).toBe(expected);
     });
 
-    test('that it works fine with string (even)', () => {
+    it('should works fine with string (even)', () => {
         const targetData = Array.from(targetPhrase);
         const actualArr = getArrPart(targetData, 'even');
         const actual = prettifyArrAsStr(actualArr)
@@ -69,7 +68,7 @@ describe('basic layer functional', () => {
         expect(actual).toBe(expected);
     });
 
-    test('that it works fine with string (uneven)', () => {
+    it('should works fine with string (uneven)', () => {
         const targetData = Array.from(targetPhrase);
         const actualArr = getArrPart(targetData, 'uneven');
         const actual = prettifyArrAsStr(actualArr);
@@ -81,22 +80,22 @@ describe('basic layer functional', () => {
         const prevValue = 'h';
         const step = 3;
         const expected = 'k';
-        const actual = shiftSymbol(prevValue, step, Alphabet.arr);
+        const actual = shiftSymbol(prevValue, step);
         expect(actual).toBe(expected);
     });
 
-    test('that it works with uneven elements arr', () => {
+    it('should works with uneven elements arr', () => {
         const step = 3;
         const expected = 'korro';
-        const actualArr = unevenElements.map(e => shiftSymbol(e, step, Alphabet.arr));
+        const actualArr = unevenElements.map(e => shiftSymbol(e, step));
         const actual = prettifyArrAsStr(actualArr);
         expect(actual).toBe(expected);
     });
 
-    test('that it works with even elements arr', () => {
+    it('should works with even elements arr', () => {
         const step = 3;
         const expected = 'hozug';
-        const actualArr = evenElements.map(e => shiftSymbol(e, step, Alphabet.arr));
+        const actualArr = evenElements.map(e => shiftSymbol(e, step));
         const actual = prettifyArrAsStr(actualArr);
         expect(actual).toBe(expected);
     });
@@ -106,5 +105,13 @@ describe('basic layer functional', () => {
         const expected = 3;
         const actual = getAverageWordLength(phrase);
         expect(actual).toBe(expected);
+    });
+
+    // ToDo #3: if alphabet[i] > max? need fix that... 
+    test('that shift crypting works fine', () => {
+        const phrase = "himan";
+        const step = 3;
+        const expected = "klpdq";
+        const actual = cryptPhraseByShift(phrase, step);
     });
 });

@@ -1,7 +1,9 @@
-const shiftSymbol = (prevValue, step, alphabeticalArr) => {
-    const findIndex = alphabeticalArr.indexOf(prevValue);
+import Alphabet from './Alphabet';
+
+const shiftSymbol = (prevValue, step) => {
+    const findIndex = Alphabet.arr.indexOf(prevValue);
     const targetValueIndex = findIndex + step;
-    return alphabeticalArr[targetValueIndex];    
+    return Alphabet.arr[targetValueIndex];    
 };
 
 export default shiftSymbol;
