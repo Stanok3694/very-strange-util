@@ -1,5 +1,3 @@
-import { Pows } from '../Entities';
-
 import { 
     cryptPhraseByShift,
     getArrPart, 
@@ -11,13 +9,8 @@ import {
 
 describe('basic layer functional', () => {
 
-    // ToDo #1: should be taken from target string and key, not from hard code
-    const x = 0.4;
-    const y = 1.25;
+    // ToDo #2: need track non-alphabetical symbols position
 
-    const PowsService = new Pows(x, y);
-
-    // ToDo #2: can have spaces - need check it and change mechanism
     const phraseWithSpace = 'hello world';
     const targetPhrase = 'helloworld';
     const arr = Array.from(targetPhrase);
@@ -30,24 +23,6 @@ describe('basic layer functional', () => {
     test('phrase with space convert to phrase without space', () => {
         const formattedPhrase = removeSpacesFromPhrase(phraseWithSpace);
         expect(formattedPhrase).toBe(targetPhrase);
-    });
-
-    it('should calc pow of sum', () => {
-        const actual = PowsService.Sum;
-        const expected = 2.7225;
-        expect(actual).toBe(expected);
-    });
-
-    it('should calc pow of residual', () => {
-        const actual = PowsService.Residual;
-        const expected = 0.7225;
-        expect(actual).toBe(expected);
-    });
-
-    it('should calc residual of pow', () => {
-        const actual = PowsService.ResidualOfPow;
-        const expected = -1.4025;
-        expect(actual).toBe(expected);
     });
 
     it('should take only even elements', () => {
