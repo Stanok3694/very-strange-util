@@ -109,10 +109,16 @@ describe('basic layer functional', () => {
         expect(actual).toBe(expected);
     });
 
-    // ToDo #3: if alphabet[i] > max? need fix that... 
-    test('that shift crypting works fine', () => {
+    test('that shift less than alphabet length', () => {
         const phrase = "himan";
         const step = 3;
+        const expected = "klpdq";
+        const actual = cryptPhraseByShift(phrase, step);
+    });
+
+    test('that shift more than alphabet length', () => {
+        const phrase = "himan";
+        const step = 31;
         const expected = "klpdq";
         const actual = cryptPhraseByShift(phrase, step);
     });
