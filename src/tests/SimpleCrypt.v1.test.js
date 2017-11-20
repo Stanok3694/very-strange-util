@@ -1,11 +1,12 @@
 import { Pows } from '../Entities';
 
 import { 
+    cryptPhraseByShift,
     getArrPart, 
-    shiftSymbol, 
-    prettifyArrAsStr,
     getAverageWordLength,
-    cryptPhraseByShift 
+    prettifyArrAsStr,
+    removeSpacesFromPhrase, 
+    shiftSymbol, 
 } from '../logic';
 
 describe('basic layer functional', () => {
@@ -17,6 +18,7 @@ describe('basic layer functional', () => {
     const PowsService = new Pows(x, y);
 
     // ToDo #2: can have spaces - need check it and change mechanism
+    const phraseWithSpace = 'hello world';
     const targetPhrase = 'helloworld';
     const arr = Array.from(targetPhrase);
 
@@ -24,6 +26,11 @@ describe('basic layer functional', () => {
     const evenElements = Array.from(evenPhrase);
     const unevenPhrase = 'hlool';
     const unevenElements = Array.from(unevenPhrase);
+
+    test('phrase with space convert to phrase without space', () => {
+        const formattedPhrase = removeSpacesFromPhrase(phraseWithSpace);
+        expect(formattedPhrase).toBe(targetPhrase);
+    });
 
     it('should calc pow of sum', () => {
         const actual = PowsService.Sum;

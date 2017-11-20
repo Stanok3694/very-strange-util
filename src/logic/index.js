@@ -4,3 +4,4 @@ export { default as prettifyArrAsStr } from './prettifyArrAsStr';
 export { default as roundUpResult } from './roundUpResult';
 export { default as shiftSymbol } from './shiftSymbol';
 export { default as cryptPhraseByShift } from './cryptPhraseByShift';
+export { default as removeSpacesFromPhrase } from './removeSpacesFromPhrase';
