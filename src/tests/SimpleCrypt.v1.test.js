@@ -1,10 +1,12 @@
-import Pows from './Pows';
-import Alphabet from './Alphabet';
-import getArrPart from './getArrPart';
-import shiftSymbol from './shiftSymbol';
-import prettifyArrAsStr from './prettifyArrAsStr';
-import getAverageWordLength from './getAverageWordLength';
-import cryptPhraseByShift from './cryptPhraseByShift';
+import { Pows } from '../Entities';
+
+import { 
+    getArrPart, 
+    shiftSymbol, 
+    prettifyArrAsStr,
+    getAverageWordLength,
+    cryptPhraseByShift 
+} from '../logic';
 
 describe('basic layer functional', () => {
 

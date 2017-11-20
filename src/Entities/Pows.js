@@ -1,4 +1,4 @@
-import roundUpResult from './roundUpResult';
+import roundUpResult from '../logic/roundUpResult';
 
 export default class Pows {
     constructor(x, y) {
