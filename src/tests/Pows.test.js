@@ -1,4 +1,4 @@
-import { Pows } from '../Entities';
+import { Pows } from '../entities';
 
 // ToDo #1: should be taken from target string and key, not from hard code    
 

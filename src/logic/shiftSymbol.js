@@ -1,4 +1,4 @@
-import { Alphabet } from '../Entities';
+import { Alphabet } from '../entities';
 
 const shiftSymbol = (prevValue, step) => {
     const findIndex = Alphabet.Arr.indexOf(prevValue);

@@ -1,6 +1,6 @@
 import prettifyArrAsStr from './prettifyArrAsStr';
 import shiftSymbol from './shiftSymbol';
-import { Alphabet } from '../Entities';
+import { Alphabet } from '../entities';
 
 const cryptPhraseByShift = (phrase, step) => {
     const phraseArr = Array.from(phrase);
