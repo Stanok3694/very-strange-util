@@ -8,6 +8,5 @@ ToDo [strategic]:
 ***
 ToDo [operative]:
  - ToDo#1 should be taken from target string and key, not from hard code;
- - ToDo#2 can have spaces - need check it and change mechanism;
- - ToDo#3 if alphabet[i] > max? need fix that...
+ - ToDo#2 can have spaces - need check it and change mechanism.
  ***
